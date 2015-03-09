@@ -1,25 +1,25 @@
-When(/^I send a POST request to "([^"]*)" with the following:$/) do |url, params|
+When(/^I make a POST to "([^"]*)" with the following:$/) do |url, params|
   Cucoo::Driver.post url, params.hashes.first
 end
 
-When(/^I send a POST request to "([^"]*)" with headers "([^"]*)" and the following params:$/) do |url, headers, params|
+When(/^I make a POST to "([^"]*)"$/) do |url|
+  Cucoo::Driver.post url
+end
+
+When(/^I make a POST to "([^"]*)" with headers "([^"]*)" and the following params:$/) do |url, headers, params|
   header, value = headers.split(':')
   Cucoo::Driver.post_with_header url, {header => value, 'Content-type' => 'text/plain; charset=UTF-8'},  params.hashes.first.to_json
 end
 
-When(/^I make a GET request to "([^"]*)"$/) do |url|
+When(/^I make a GET to "([^"]*)"$/) do |url|
   Cucoo::Driver.get url
 end
 
-When(/^I send a DELETE request to "([^"]*)"$/) do |url|
+When(/^I send a DELETE to "([^"]*)"$/) do |url|
   Cucoo::Driver.delete url
 end
 
-When(/^I send a POST request to "([^"]*)"$/) do |url|
-  Cucoo::Driver.post url
-end
-
-When(/^I send a DELETE request to "([^"]*)" with params:$/) do |url, params|
+When(/^I send a DELETE to "([^"]*)" with params:$/) do |url, params|
   Cucoo::Driver.delete url, params.hashes.first
 end
 
