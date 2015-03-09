@@ -3,23 +3,22 @@ Given(/^I expect a POST to "([^"]*)" with the following setup:$/) do |url, table
   stub_my_request(:post, url, params)
 end
 
-Then(/^the response should be OK and expectations met$/) do
+Then(/^the response should be OK$/) do
   expect(Cucoo::Driver.response.code).to be_between(200, 201).inclusive
   assert_all_stubs!
 end
 
-Then(/^the response should be NOT FOUND and expectations met$/) do
+Then(/^the response should be NOT FOUND$/) do
   expect(Cucoo::Driver.response.code).to eq(404)
   assert_all_stubs!
 end
 
-Then(/^the response should be BAD REQUEST and expectations met$/) do
+Then(/^the response should be BAD REQUEST$/) do
   expect(Cucoo::Driver.response.code).to eq(400)
   assert_all_stubs!
 end
 
-
-Then(/^the response should be "([^"]*)" and expectations met$/) do |code|
+Then(/^the response code should be "([^"]*)"$/) do |code|
   expect(Cucoo::Driver.response.code).to eq(code.to_i)
   assert_all_stubs!
 end
@@ -43,8 +42,4 @@ end
 
 And(/^I expect a DELETE to "([^"]*)"$/) do |url|
   stub_my_request(:delete, url, {})
-end
-
-And(/^I expect SQS to accept the following message to send:$/) do |json|
-  expect(PushNotificationService::Sqs).to receive(:add_job).with(JSON.parse(json).symbolize_keys)
 end
