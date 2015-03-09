@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version = Cucoo::VERSION
   spec.authors = ['RC']
   spec.email = ['rc.chandru@gmail.com']
-  spec.summary = %q{Baah}
-  spec.description = %q{Booo}
-  spec.homepage = ''
+  spec.summary = %q{Cucumber steps and assertions for testing your APIs}
+  spec.description = %q{Cucumber steps and assertions for testing your APIs}
+  spec.homepage = 'https://github.com/rcdexta/cucoo'
   spec.license = 'MIT'
 
   spec.files = `git ls-files -z`.split("\x0")
