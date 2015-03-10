@@ -48,7 +48,7 @@ end
 
 This will start your application on port 6666 on localhost and assume the external services are stubbed at specified host and port.
 
-## First Test
+## Ping Pong Test
 Our app responds to a url `/health/ping.json` with ping. The test to assert this is as follows
 ```cucumber
 Scenario: Health Checker
@@ -56,6 +56,54 @@ Scenario: Health Checker
     Then the response should be OK
     And the response body must be "pong"
 ```
+
+## More examples
+
+In all the examples, lets assume we are asserting calls to an external service with the url `/external_service/***`
+
+1. Simple hello world service that accepts two post body params `message` and `says` and calls an external service. 
+```cucumber
+Scenario: Post Hello World
+    Given I expect a POST to "/external_service/post_hello" with:
+      | request                                   |
+      | {"message":"Hello World", "says": "John"} |
+    When I make a POST to "/hello_world" with the following:
+      | message     | says |
+      | Hello World | John |
+    Then the response should be OK
+```
+
+The last line does two things. It checks if the response code is 200 and also if the expectations were satisfied. So, this must be called at the end of each scenario.
+
+2. Let's build on top of previous example and the app is suppose to return back what the external service returns.
+
+```cucumber
+Scenario: Post Hello World and accept response
+    Given I expect a POST to "/external_service/post_hello" with:
+      | request                                  | response                                |
+      | {"message":"Hello World","says": "John"} | {"reply": "Get some life John"}         |
+    When I make a POST to "/hello_world" with the following:
+      | message     | says |
+      | Hello World | John |
+    Then the response should be OK
+    Then the JSON should be:
+    """
+    {
+       "reply": "Get some life John"
+    }
+    """
+```
+
+Note that if the response from an external service is huge and can be read from a file, the POST expectation step can read from the file
+
+```cucumber
+Given I expect a POST to "/external_service/post_hello" with:
+      | request                                  | file                                |
+      | {"message":"Hello World","says": "John"} | stub/json/hello_world/response.json |
+```
+
+The file will be read relative the rails root path.
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/cucoo/fork )
