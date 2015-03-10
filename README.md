@@ -1,6 +1,6 @@
 # Cucoo
 
-TODO: Write a gem description
+Cucumber steps and assertions for testing your APIs. This gem offers a DSL on top of webmock, cucumber and json_spec to make testing APIs on rails easier.
 
 ## Installation
 
@@ -18,10 +18,43 @@ Or install it yourself as:
 
     $ gem install cucoo
 
-## Usage
+## Configuration
 
-TODO: Write usage instructions here
+Cucoo comes as a package with the following gems installed
 
+ - [cucumber](https://github.com/cucumber/cucumber-rails)
+ - [webmock](https://github.com/bblimke/webmock)
+ - [json_spec](https://github.com/collectiveidea/json_spec)
+ 
+ A typical env.rb would look like this:
+ 
+``` ruby env.rb
+require 'cucoo/rails'
+
+ActionController::Base.allow_rescue = false
+
+require File.expand_path('../../../config/environment', __FILE__)
+
+Capybara.default_driver = :selenium
+
+Cucumber::Rails::Database.javascript_strategy = :truncation
+
+Cucoo.config do |config|
+  config.app_port = 6666
+  config.stub_host = 'localhost'
+  config.stub_port = 4080
+end
+```
+This will start your application on port 6666 on localhost and assume the external services are stubbed at specified host and port.
+
+## First Test
+Our app responds to a url `/health/ping.json` with ping. The test to assert this is as follows
+``` cucumber
+Scenario: Health Checker
+    Given I make a GET to "/health/ping.json"
+    Then the response should be OK
+    And the response body must be "pong"
+```
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/cucoo/fork )

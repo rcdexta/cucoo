@@ -1,6 +1,6 @@
 module StubHelper
   def expand_url(url)
-    ['http://localhost:', Cucoo::Config.stub_port, url].join
+    ['http://', Cucoo::Config.stub_host, ':', Cucoo::Config.stub_port, url].join
   end
 
   def assert_all_stubs!
