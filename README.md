@@ -28,7 +28,7 @@ Cucoo comes as a package with the following gems installed
  
  A typical env.rb would look like this:
  
-``` ruby env.rb
+```ruby
 require 'cucoo/rails'
 
 ActionController::Base.allow_rescue = false
@@ -45,11 +45,12 @@ Cucoo.config do |config|
   config.stub_port = 4080
 end
 ```
+
 This will start your application on port 6666 on localhost and assume the external services are stubbed at specified host and port.
 
 ## First Test
 Our app responds to a url `/health/ping.json` with ping. The test to assert this is as follows
-``` cucumber
+```cucumber
 Scenario: Health Checker
     Given I make a GET to "/health/ping.json"
     Then the response should be OK
