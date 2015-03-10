@@ -22,11 +22,11 @@ Or install it yourself as:
 
 Cucoo comes as a package with the following gems installed
 
- - [cucumber](https://github.com/cucumber/cucumber-rails)
- - [webmock](https://github.com/bblimke/webmock)
- - [json_spec](https://github.com/collectiveidea/json_spec)
- 
- A typical env.rb would look like this:
+* [json_spec](https://github.com/collectiveidea/json_spec)
+* [cucumber](https://github.com/cucumber/cucumber-rails)
+* [webmock](https://github.com/bblimke/webmock)
+
+A typical env.rb would look like this:
  
 ```ruby
 require 'cucoo/rails'
