@@ -4,9 +4,7 @@ require 'webmock/cucumber'
 require 'cucumber/rails'
 require 'rspec/mocks'
 require 'cucoo/stub_helper'
-require 'cucoo/step_definitions/api_steps'
-require 'cucoo/step_definitions/stub_steps'
-require 'cucoo/step_definitions/json_spec_steps'
+require 'cucoo/cucumber'
 
 Before do
   clear_stubs!
