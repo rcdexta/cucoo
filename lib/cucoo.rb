@@ -8,7 +8,8 @@ module Cucoo
 
   def self.config
     yield Config
-    WebMock.disable_net_connect!(allow: %W(127.0.0.1:#{Cucoo::Config.app_port} localhost:#{Cucoo::Config.app_port}))
+    WebMock.disable_net_connect!(allow: "localhost:#{Cucoo::Config.app_port}")
+    WebMock.allow_net_connect!(:net_http_connect_on_start => true)
   end
 
 end
