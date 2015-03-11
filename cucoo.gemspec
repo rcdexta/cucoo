@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors = ['RC']
   spec.email = ['rc.chandru@gmail.com']
   spec.summary = %q{Cucumber steps and assertions for testing your APIs}
-  spec.description = %q{Cucumber steps and assertions for testing your APIs}
+  spec.description = %q{This gem offers a DSL on top of webmock, cucumber and json_spec to make testing APIs on rails easier}
   spec.homepage = 'https://github.com/rcdexta/cucoo'
   spec.license = 'MIT'
 
@@ -26,9 +26,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'rspec-rails', '~> 3.0'
   spec.add_dependency 'cucumber-rails'
   spec.add_dependency 'selenium-webdriver'
-  spec.add_development_dependency 'rails', '~> 4.2.0'
-  spec.add_development_dependency 'cucumber-rails'
-  spec.add_development_dependency 'rspec-rails', '~> 3.0'
   spec.add_development_dependency 'bundler', '~> 1.7'
   spec.add_development_dependency 'rake', '~> 10.0'
 end
