@@ -29,6 +29,7 @@ Cucoo comes as a package with the following gems installed
 A typical env.rb would look like this:
  
 ```ruby
+require 'cucumber/rails'
 require 'cucoo/rails'
 
 ActionController::Base.allow_rescue = false

@@ -1,0 +1,3 @@
+default: <%= std_opts %> features RAILS_ENV=test
+wip: --tags @wip:3 --wip features RAILS_ENV=test
+rerun: <%= rerun_opts %> --format rerun --out rerun.txt --strict --tags ~@wip RAILS_ENV=test

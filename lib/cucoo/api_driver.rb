@@ -1,7 +1,9 @@
+require 'httparty'
+
 module Cucoo
   class ApiDriver
 
-    include HTTParty
+    include ::HTTParty
 
     def post(url, body=nil)
       @response = self.class.post(url, {body: body})

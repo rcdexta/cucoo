@@ -1,6 +1,7 @@
 require 'cucoo/version'
 require 'cucoo/config'
 require 'cucoo/api_driver'
+require 'active_support'
 
 module Cucoo
 
