@@ -1,5 +1,8 @@
 # Cucoo
 
+[![Build Status](https://travis-ci.org/rcdexta/cucoo.svg)](https://travis-ci.org/rcdexta/cucoo)
+[![Gem Version](https://badge.fury.io/rb/cucoo.svg)](http://badge.fury.io/rb/cucoo)
+
 Cucumber steps and assertions for testing your APIs. This gem offers a DSL on top of webmock, cucumber and json_spec to make testing APIs on rails easier.
 
 ## Installation
