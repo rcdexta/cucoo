@@ -9,6 +9,10 @@ module Cucoo
       @response = self.class.post(url, {body: body})
     end
 
+    def post_raw(url, body=nil)
+      @response = self.class.post(url, {body: body.to_json})
+    end
+
     def post_with_header(url, headers = {}, body=nil)
       @response = self.class.post(url, {body: body, headers: headers})
     end
@@ -33,7 +37,7 @@ module Cucoo
   class Driver
     extend SingleForwardable
     @api_driver = Cucoo::ApiDriver.new
-    def_delegators :@api_driver, :post, :put, :get, :delete, :response, :post_with_header
+    def_delegators :@api_driver, :post, :post_raw, :put, :get, :delete, :response, :post_with_header
   end
 
 end

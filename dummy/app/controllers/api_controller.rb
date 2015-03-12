@@ -6,4 +6,8 @@ class ApiController < ApplicationController
     render json: {message:'success'}
   end
 
+  def show
+
+  end
+
 end
